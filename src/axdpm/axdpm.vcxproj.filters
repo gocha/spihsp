@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\undpm32">
+      <UniqueIdentifier>{74dcc7b3-4705-4067-9f3d-5570e264b8c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\undpm32">
+      <UniqueIdentifier>{12d37b8c-189c-4d86-875b-57385fad42d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="axdpm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="infcache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="spi00am.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="undpm32\crypt.c">
+      <Filter>Source Files\undpm32</Filter>
+    </ClCompile>
+    <ClCompile Include="undpm32\egalloc.c">
+      <Filter>Source Files\undpm32</Filter>
+    </ClCompile>
+    <ClCompile Include="undpm32\egcnvstr.c">
+      <Filter>Source Files\undpm32</Filter>
+    </ClCompile>
+    <ClCompile Include="undpm32\egstring.c">
+      <Filter>Source Files\undpm32</Filter>
+    </ClCompile>
+    <ClCompile Include="undpm32\info.c">
+      <Filter>Source Files\undpm32</Filter>
+    </ClCompile>
+    <ClCompile Include="undpm32\main.c">
+      <Filter>Source Files\undpm32</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="axdpm.def">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="axdpm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="critsect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="infcache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="spi00am.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="undpm32\crypt.h">
+      <Filter>Header Files\undpm32</Filter>
+    </ClInclude>
+    <ClInclude Include="undpm32\egalloc.h">
+      <Filter>Header Files\undpm32</Filter>
+    </ClInclude>
+    <ClInclude Include="undpm32\egcnvstr.h">
+      <Filter>Header Files\undpm32</Filter>
+    </ClInclude>
+    <ClInclude Include="undpm32\egstring.h">
+      <Filter>Header Files\undpm32</Filter>
+    </ClInclude>
+    <ClInclude Include="undpm32\info.h">
+      <Filter>Header Files\undpm32</Filter>
+    </ClInclude>
+    <ClInclude Include="undpm32\main.h">
+      <Filter>Header Files\undpm32</Filter>
+    </ClInclude>
+    <ClInclude Include="undpm32\undpm32.h">
+      <Filter>Header Files\undpm32</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
