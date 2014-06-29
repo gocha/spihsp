@@ -2,8 +2,8 @@
  * Susie plug-in: HSP DPM archive extractor
  * written by gocha, feel free to redistribute
  * 
- * based on spi00am_ex.h by Shimitei
- * http://www.asahi-net.or.jp/~kh4s-smz/spi/make_spi.html
+ * based on spi00am_ex.h by Shimitei:
+ * <http://www.asahi-net.or.jp/~kh4s-smz/spi/make_spi.html>
  * 
  * 実行ファイルサポートの有無はundpm32.hの宣言で決まります
  */

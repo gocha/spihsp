@@ -1,6 +1,6 @@
 /**
  * Cache system for Susie Plug-in by shimitei (modified by gocha)
- * http://www.asahi-net.or.jp/~kh4s-smz/spi/make_spi.html
+ * <http://www.asahi-net.or.jp/~kh4s-smz/spi/make_spi.html>
  */
 
 #include <string.h>

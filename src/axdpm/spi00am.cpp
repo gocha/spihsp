@@ -1,6 +1,6 @@
 /**
  * SUSIE32 '00AM' Plug-in Sample by shimitei (modified by gocha)
- * http://www.asahi-net.or.jp/~kh4s-smz/spi/make_spi.html
+ * <http://www.asahi-net.or.jp/~kh4s-smz/spi/make_spi.html>
  */
 
 #include <windows.h>

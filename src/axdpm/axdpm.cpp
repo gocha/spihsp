@@ -2,11 +2,11 @@
  * Susie plug-in: HSP DPM archive extractor
  * written by gocha, feel free to redistribute
  * 
- * based on spi00am_ex.cpp by Shimitei
- * http://www.asahi-net.or.jp/~kh4s-smz/spi/make_spi.html
+ * based on spi00am_ex.cpp by Shimitei:
+ * <http://www.asahi-net.or.jp/~kh4s-smz/spi/make_spi.html>
  * 
- * SusieプラグインとUNDPM32.DLLの作りがめがっさ逆なのに加え、
- * 各種処理の手抜きが見事な低速処理を実現しています！ :/
+ * SusieプラグインとUNDPM32.DLLの作りが逆であることに加え、
+ * 各種処理の手抜きが速度低下の要因となっているかもしれません。
  */
 
 #include <windows.h>
@@ -48,7 +48,7 @@ BOOL IsSupportedEx(char *filename, char *data)
   const BYTE dpmHdrSig[4] = { 'D', 'P', 'M', 'X' };
   const BYTE exeHdrSig[4] = { 'M', 'Z', 0x90, 0x00 };
 
-  // 手抜き、一次予選は簡単に通過できます :P
+  // 先頭バイト列のみの簡易チェックを行う
   if(memcmp(data, dpmHdrSig, 4) == 0)
   {
     return TRUE;
@@ -75,17 +75,16 @@ int GetArchiveInfoEx(LPSTR filename, long len, HLOCAL *lphInf)
   int result = SPI_ALL_RIGHT;
   HDPM dpm;
 
-  // おねえさまがいないとわたし…なにもできないから
   dpm = UnDpmOpenArchive(filename, (DWORD) len);
   if(dpm)
   {
     DWORD nFiles;
     fileInfo* pInfo;
 
-    // ファイルの数を教えてせんせいさん
+    // ファイル数を取得
     nFiles = UnDpmGetFileCount(dpm);
 
-    // 返却するファイル情報の割り当て (ファイル数+1個, 初期化必須)
+    // 返却するファイル情報を割り当てる (ファイル数+1個, 初期化必須)
     pInfo = (fileInfo*) LocalAlloc(LPTR, sizeof(fileInfo) * (nFiles+1));
     if(pInfo)
     {
@@ -95,14 +94,13 @@ int GetArchiveInfoEx(LPSTR filename, long len, HLOCAL *lphInf)
       // 各ファイルを連続的に処理
       for(fileId = 1; fileId <= nFiles; fileId++)
       {
-        // 圧縮法: 7文字以内でテケトーに
+        // 圧縮法: 7文字以内のユニークな文字列
         strcpy((char*) pInfo->method, "HSP DPM");
         // 位置: ファイルを識別し、高速に処理するための鍵にすると良い
         // ※本プラグインでは仕方なく、UNDPM32用のファイルIDを入れる
         pInfo->position = fileId;
         // 圧縮されたサイズ: 無圧縮
-        // 返す値はヘッダなどのサイズも含めるべきらしいです
-        // 返すべき値はおねえさまに訊いてみないとわかりません
+        // 返す値はヘッダなどのサイズも含めるべきとされる
         pInfo->compsize = UnDpmGetCompressedSize(dpm, fileId);
         // 元のファイルのサイズ: 無圧縮
         pInfo->filesize = UnDpmGetOriginalSize(dpm, fileId);
@@ -122,12 +120,10 @@ int GetArchiveInfoEx(LPSTR filename, long len, HLOCAL *lphInf)
     {
       result = SPI_NO_MEMORY;
     }
-    // また後で会いましょう
     UnDpmCloseArchive(dpm);
   }
   else
   {
-    // おねえさまに見捨てられてBADEND
     result = SPI_FILE_READ_ERROR;
   }
   return result;
@@ -143,7 +139,6 @@ int GetFileEx(char *filename, HLOCAL *dest, fileInfo *pinfo,
   int result = SPI_ALL_RIGHT;
   HDPM dpm;
 
-  // おねえさまがいないとわたし…なにもできないから
   dpm = UnDpmOpenArchive(filename, 0);
   if(dpm)
   {
@@ -169,12 +164,10 @@ int GetFileEx(char *filename, HLOCAL *dest, fileInfo *pinfo,
     {
       result = SPI_NO_MEMORY;
     }
-    // おやすみなさい
     UnDpmCloseArchive(dpm);
   }
   else
   {
-    // おねえさまに見捨てられてBADEND
     result = SPI_FILE_READ_ERROR;
   }
   return result;
