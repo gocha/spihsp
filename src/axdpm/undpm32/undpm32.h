@@ -32,20 +32,15 @@
 #define EXTERN_C            extern
 #endif // defined(__cplusplus)
 
-#ifdef UNDPM32_EXPORTS
-#define UNDPMAPI
-#else
+#ifdef UNDPM32_NO_EXTERN
 #define UNDPMAPI            EXTERN_C
-#endif
-
-// DLLŽž‘ã‚Ì–¼Žc
-#if 0
+#else
 #ifdef UNDPM32_EXPORTS
 #define UNDPMAPI            EXTERN_C __declspec(dllexport)
 #else
 #define UNDPMAPI            EXTERN_C __declspec(dllimport)
 #endif // !defined(UNDPM32_EXPORTS)
-#endif
+#endif // !defined(UNDPM32_NO_EXTERN)
 
 /*--------------------------------------------------------------------------
   Œ^’è‹`
