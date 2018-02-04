@@ -34,7 +34,7 @@ after_build:
   - copy src\%outdir%\axdpmex.spi bin
   - copy src\%outdir%\axdpm33.spi bin
   - copy src\%outdir%\axdpm33ex.spi bin
-  - 7z a -mx9 %package_name%.7z bin src.7z README.md README_ja.md LICENSE
+  - 7z a -mx9 %package_name%.7z bin contrib src.7z README.md README_ja.md LICENSE
 
 artifacts:
   - path: $(package_name).7z
