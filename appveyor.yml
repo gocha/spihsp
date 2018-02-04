@@ -23,7 +23,7 @@ before_build:
   - 7z a -mx9 src.7z src
 
 build_script:
-  - msbuild src\spihsp.sln /t:build /p:Configuration=%config%;Platform="%platform%" /m
+  - msbuild src\spihsp.sln /t:build /p:Configuration=%config%;Platform="%platform%" /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 after_build:
   - ps: $env:gitrev = git describe --tags
