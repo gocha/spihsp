@@ -1,5 +1,6 @@
 spihsp
 ======
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/xe7bwuinckj02juw/branch/master?svg=true)](https://ci.appveyor.com/project/gocha/spihsp/branch/master)
 
 spihsp is a Susie plugin package for [Hot Soup Processor](http://hsp.tv/) 2 and 3.
 

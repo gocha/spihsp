@@ -1,0 +1,41 @@
+image: Visual Studio 2017
+
+environment:
+  matrix:
+  - generator: "Visual Studio 15"
+    config: Release
+    platform: Win32
+    outdir: Release
+    arch: vs2017-x86
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+  - generator: "Visual Studio 14"
+    config: Release
+    platform: Win32
+    outdir: Release
+    arch: vs2015-x86
+    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+init:
+  - git config --global core.autocrlf true
+
+before_build:
+  - 7z a -mx9 src.7z src
+
+build_script:
+  - msbuild src\spihsp.sln /t:build /p:Configuration=%config%;Platform="%platform%" /m
+
+after_build:
+  - ps: $env:gitrev = git describe --tags
+  - ps: $env:my_version = "$env:gitrev"
+  - set package_name=spihsp-%my_version%-%arch%
+  - if not exist bin mkdir bin
+  - copy src\%outdir%\axdpm.spi bin
+  - copy src\%outdir%\axdpmex.spi bin
+  - copy src\%outdir%\axdpm33.spi bin
+  - copy src\%outdir%\axdpm33ex.spi bin
+  - 7z a -mx9 %package_name%.7z bin src.7z README.md README_ja.md LICENSE
+
+artifacts:
+  - path: $(package_name).7z
+    name: $(arch)
