@@ -8,7 +8,7 @@
 #include <windows.h>
 
 // 実行ファイル展開用のコードを使用するか否か
-#define UNDPM32_ALLOWEXEFILE
+//#define UNDPM32_ALLOWEXEFILE
 
 // HSP3.3向けの展開コードを使用するか否か(現状HSP3.3以前と排他利用)
 //#define HSP33_SUPPORT
