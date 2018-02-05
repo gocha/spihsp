@@ -1,3 +1,5 @@
+version: 1.0.{build}
+
 image: Visual Studio 2017
 
 environment:
@@ -17,7 +19,7 @@ environment:
     APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 init:
-  - git config --global core.autocrlf true
+  - git config --global core.autocrlf input
 
 before_build:
   - 7z a -mx9 src.7z src
